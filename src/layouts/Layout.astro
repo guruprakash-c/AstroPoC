@@ -1,6 +1,9 @@
 ---
 import HeaderSection from '../components/shared/HeaderSection.astro';
 import FooterSection from '../components/shared/FooterSection.astro';
+import '../assets/style.css';
+const { pageTitle } = Astro.props;
+const borderStyle = '2px ridge #c0c0c0';
 ---
 <!doctype html>
 <html lang="en">
@@ -9,16 +12,25 @@ import FooterSection from '../components/shared/FooterSection.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro PoC</title>
+		<title>{pageTitle}</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 	</head>
 	<body class="container">
-		<HeaderSection/>
+		<HeaderSection brand={pageTitle} brandUrl="http://localhost:4321/"/>
 		<main>
 			<slot />
 		</main>
-		<FooterSection/>
+		<FooterSection platform={pageTitle} url="http://localhost:4321/"/>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>
+
+<style define:vars={{borderStyle}}>
+	main{
+		background: white;
+		padding: 1.5rem;
+		margin:1.rem;
+		border: var(--borderStyle);
+	}
+</style>

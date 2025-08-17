@@ -1,0 +1,19 @@
+---
+import Layout  from './Layout.astro';
+import TagLayout from "./TagLayout.astro";
+const { frontmatter } = Astro.props;
+---
+<Layout pageTitle={frontmatter.title}>
+<article>
+    <h1>{frontmatter.title}</h1>
+    <h2 class="fs-4">
+        <time datetime={frontmatter.pubDate}>{frontmatter.pubDate.toString().slice(0,10)}</time>&middot; 
+        <span>{frontmatter.tags.map((tag:any) => <a class="ms-1 me-1" href={'/pages/tags/'+tag}>{tag}</a>)}</span>&middot; 
+        <span><a href={'/search/'+frontmatter.author}>{frontmatter.author}</a></span>
+    </h2>
+    <img src={frontmatter.image.url} class="img-thumbnail" alt={frontmatter.image.alt} />
+    <p>{frontmatter.description}</p>
+    <TagLayout />
+</article>
+<slot />
+</Layout>  

@@ -1,0 +1,42 @@
+html {
+  background: teal;
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
+}
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+
+body {
+  border: 2px ridge #c0c0c0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+a,
+a.nav-link{
+  color: navy;
+}
+a:hover,
+a.nav-link:hover,
+a:focus,
+a.nav-link:focus{
+  color: magenta;
+  text-decoration: none;
+}
+.navbar{
+  border: 2px ridge gray;
+}
+.light a.nav-link {
+  color: blue;
+}
+.dark a.nav-link {
+  color: #fff;
+}

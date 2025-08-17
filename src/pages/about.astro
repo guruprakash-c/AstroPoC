@@ -1,12 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const products = ["Devstoc", "Stackofapps", "Laerer Labs", "Affiliateportals", "Xlskoor", "Escribitionists"];
+const royalColor = 'magenta';
+const pageTitle = 'About - Astro PoC';
 ---
 
-<Layout>
+<Layout pageTitle={pageTitle}>
 	<h1>About Me</h1>
     <h2>... and my new Astro site!</h2>
 
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
 
     <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+    <ul class="nav justify-content-center">
+        { 
+            products.map((product) => <li class="nav-item"><a class="nav-link product" href="#">{product}</a></li>)
+        }
+    </ul>  
 </Layout>
+<style define:vars={{royalColor}}>
+    .product {
+        color: var(--royalColor);
+        font-weight: 900;
+    }
+</style>

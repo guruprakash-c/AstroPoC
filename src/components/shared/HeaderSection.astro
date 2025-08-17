@@ -1,13 +1,16 @@
 ---
+import ThemeIcon from "./ThemeIcon.astro";
+
 export type NavItems = {
   pageTitle:'',
   pageUrl:''
 };
 let navItems = [];
+const {brand, brandUrl} = Astro.props; 
 ---
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand align-middle" href="/"><i class="bi bi-search-heart me-1"></i>Astro PoC</a>
+    <a class="navbar-brand align-middle" href={brandUrl}><i class="bi bi-search-heart me-1"></i>{brand}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,14 +26,14 @@ let navItems = [];
           <a class="nav-link" href="/blog/">Blog</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tags
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="/tags/astro">Astro</a></li>
+            <li><a class="dropdown-item" href="/tags/blogging">Blogging</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="/tags/">All Tags</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -41,6 +44,11 @@ let navItems = [];
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button class="btn btn-dark" type="submit" aria-label="Search">Search</button>
       </form>
+      <ThemeIcon/>
     </div>
   </div>
 </nav>
+<script is:inline>
+  const theme = localStorage.getItem("theme");
+  document.getElementsByClassName('navbar').data('data-bs-theme', theme);
+</script>
